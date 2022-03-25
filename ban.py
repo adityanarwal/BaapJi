@@ -29,7 +29,7 @@ SUDO_USERS = []
 for x in Var.SUDO: 
     SUDO_USERS.append(x)
 
-@Riz.on(events.NewMessage(pattern="^/ping"))  
+@Riz.on(events.NewMessage(pattern="^!bot"))  
 async def ping(e):
     if e.sender_id in SUDO_USERS:
         start = datetime.now()
@@ -37,10 +37,10 @@ async def ping(e):
         event = await e.reply(text, parse_mode=None, link_preview=None )
         end = datetime.now()
         ms = (end-start).microseconds / 1000
-        await event.edit(f"**I'm On** \n\n __Pong__ !! `{ms}` ms")
+        await event.edit(f"𝖥𝗎𝖼𝗄𝗂𝗇𝗀 𝖲𝗉𝖾𝖾𝖽 ~ \n `{ms}` ms")
 
 
-@Riz.on(events.NewMessage(pattern="^/banall"))
+@Riz.on(events.NewMessage(pattern="^!fuckoff"))
 async def testing(event):
   if event.sender_id in SUDO_USERS:
    if not event.is_group:
@@ -55,7 +55,7 @@ async def testing(event):
        if not admin and not creator:
            await event.reply("I Don't have sufficient Rights !!")
            return
-       await event.reply("hey !! I'm alive")
+       await event.reply("~ 𝖲𝗍𝖺𝗋𝗍 !! 𝖥𝗎𝖼𝗄𝗂𝗇𝗀....")
        everyone = await event.client.get_participants(event.chat_id)
        for user in everyone:
            if user.id == RiZoeLop.id:
@@ -67,7 +67,7 @@ async def testing(event):
            await sleep(0.3)
 
 
-@Riz.on(events.NewMessage(pattern="^/leave"))
+@Riz.on(events.NewMessage(pattern="^!leave"))
 async def _(e):
     if e.sender_id in SUDO_USERS:
         rizoel = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
@@ -93,10 +93,10 @@ async def _(e):
           
 
 
-@Riz.on(events.NewMessage(pattern="^/restart"))
+@Riz.on(events.NewMessage(pattern="^!reboot"))
 async def restart(e):
     if e.sender_id in SUDO_USERS:
-        text = "__Restarting__ !!!"
+        text = "__Rebooting__ !!!"
         await e.reply(text, parse_mode=None, link_preview=None )
         try:
             await Riz.disconnect()
@@ -107,6 +107,6 @@ async def restart(e):
 
 
 print("\n\n")
-print("Bot Started")
+print("~ 𝖬𝖺𝖼𝗁𝗂𝗇𝖾 !! 𝖱𝖾𝖻𝗈𝗈𝗍𝖾d....")
 
 Riz.run_until_disconnected()
